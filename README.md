@@ -19,6 +19,9 @@ The scanned digits represented by pipes and underscores as a seven-segment displ
 ### Account Number
 A collection of 9 Account Digits.
 
+### Validated Account Number
+An account number that has a valid checksum based on the algorithm outlined under User Story 2 [here](http://codingdojo.org/kata/BankOCR/#problem-description).
+
 ### Account Digit
 A single digit of the account number within the range 0-9.
 

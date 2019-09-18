@@ -16,3 +16,6 @@
                                                     partitioned-middle
                                                     partitioned-bottom))]
     (s/conform ::spec/optical-characters optical-characters)))
+
+(defn lines->optical-characters [lines]
+  (map #(line->optical-characters %) lines))

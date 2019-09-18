@@ -2,7 +2,15 @@
   (:require [bankocr.parser.spec :as spec]
             [clojure.spec.alpha :as s]))
 
-(defn strings->optical-character [strings]
+(defn strings->optical-character
+  "Helper function for creating the `characters` lookup table.  Takes a
+  vector of strings in 'human readable' format, for example:
+[\" _ \"
+ \"| |\"
+ \"|_|\"]
+  and returns a parsed representation conforming to
+  `::bankocr.parser.spec/parsed-optical-character-triple`."
+  [strings]
   (s/conform ::spec/parsed-optical-character-triple
              (map #(->> %
                         (partition 3)
@@ -53,6 +61,10 @@
 (defn optical-character->account-digit [optical-character]
   (get characters optical-character))
 
-(defn optical-characters->account-number [optical-characters]
+(defn optical-characters->account-number
+  "Takes a collection of parsed Optical Characters `optical-characters`
+  and returns a collection of account numbers conforming to
+  `::bankocr.parser.spec/account-number`"
+  [optical-characters]
   (s/conform ::spec/account-number
              (map optical-character->account-digit optical-characters)))

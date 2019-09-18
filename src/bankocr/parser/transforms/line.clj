@@ -17,5 +17,9 @@
                                                     partitioned-bottom))]
     (s/conform ::spec/optical-characters optical-characters)))
 
-(defn lines->optical-characters [lines]
+(defn lines->optical-characters
+  "Takes a collection of `lines` and returns a parsed collection of
+  Optical Characters conforming to
+  `::bankocr.parser.spec/optical-characters`"
+  [lines]
   (map #(line->optical-characters %) lines))

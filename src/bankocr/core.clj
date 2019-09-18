@@ -1,5 +1,4 @@
-(ns bankocr.core)
+(ns bankocr.core
+  (:require [bankocr.parser.core :as parser]))
 
-(defn parse-document [filename]
-  (let [document (slurp filename)]
-    document))
+(def parse-document parser/parse-document)

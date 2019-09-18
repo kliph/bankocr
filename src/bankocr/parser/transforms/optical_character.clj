@@ -12,7 +12,43 @@
 (def characters {(strings->optical-character
                   [" _ "
                    "| |"
-                   "|_|"]) 0})
+                   "|_|"]) 0
+                 (strings->optical-character
+                  ["   "
+                   "  |"
+                   "  |"]) 1
+                 (strings->optical-character
+                  [" _ "
+                   " _|"
+                   "|_ "]) 2
+                 (strings->optical-character
+                  [" _ "
+                   " _|"
+                   " _|"]) 3
+                 (strings->optical-character
+                  ["   "
+                   "|_|"
+                   "  |"]) 4
+                 (strings->optical-character
+                  [" _ "
+                   "|_ "
+                   " _|"]) 5
+                 (strings->optical-character
+                  [" _ "
+                   "|_ "
+                   "|_|"]) 6
+                 (strings->optical-character
+                  [" _ "
+                   "  |"
+                   "  |"]) 7
+                 (strings->optical-character
+                  [" _ "
+                   "|_|"
+                   "|_|"]) 8
+                 (strings->optical-character
+                  [" _ "
+                   "|_|"
+                   " _|"]) 9})
 
 (defn optical-character->account-digit [optical-character]
   (get characters optical-character))

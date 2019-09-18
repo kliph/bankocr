@@ -1,4 +1,5 @@
-(ns bankocr.parser.validations.account-number)
+(ns bankocr.parser.validations.account-number
+  (:require [clojure.spec.alpha :as s]))
 
 (defn calc-single-digit [accumulator digit remaining-digits]
   (+ accumulator
@@ -16,3 +17,9 @@
                                 remaining-digits)))]
     (zero? (mod computed-sum
                 11))))
+
+(defn validate-account-number
+  "Takes a conformed Account Number and returns a Valid Accounted Number
+  conforming to `:bankocr.parser.spec/validated-account-number`"
+  [account-number]
+  (s/conform :bankocr.parser.spec/validated-account-number account-number))

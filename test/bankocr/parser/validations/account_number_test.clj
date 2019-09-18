@@ -12,3 +12,10 @@
   (testing "returns false if the account number is invalid"
     (is (= false
            (validater/checksum? invalid-account-number)))))
+
+(deftest validate-account-number
+  (testing "returns a conformed validated-account-number"
+    (is (= valid-account-number
+           (validater/validate-account-number valid-account-number)))
+    (is (= :clojure.spec.alpha/invalid
+           (validater/validate-account-number invalid-account-number)))))

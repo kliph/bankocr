@@ -6,7 +6,7 @@
 (defn document->lines
   "Accepts a `document` which is then divided into Entries with blank
   lines removed.  Returns a collection of Lines conforming to
-  `::bankocr.parser.spec/lines`"
+  `:bankocr.parser.spec/lines`"
   [document]
   (->> document
        clojure.string/split-lines

@@ -9,7 +9,7 @@
  \"| |\"
  \"|_|\"]
   and returns a parsed representation conforming to
-  `::bankocr.parser.spec/parsed-optical-character-triple`."
+  `:bankocr.parser.spec/parsed-optical-character-triple`."
   [strings]
   (s/conform ::spec/parsed-optical-character-triple
              (map #(->> %

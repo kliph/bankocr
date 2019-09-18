@@ -20,6 +20,6 @@
 (defn lines->optical-characters
   "Takes a collection of `lines` and returns a parsed collection of
   Optical Characters conforming to
-  `::bankocr.parser.spec/optical-characters`"
+  `:bankocr.parser.spec/optical-characters`"
   [lines]
   (map #(line->optical-characters %) lines))

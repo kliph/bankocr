@@ -2,9 +2,35 @@
   (:require [clojure.test :refer :all]
             [bankocr.parser.transforms.optical-character :as oc]))
 
-(defonce conformed-zero {:top '(\space \_ \space)
-                         :middle '(\| \space \|)
-                         :bottom '(\| \_ \|)})
+(defonce conformed-optical-characters '({:top (\space \_ \space)
+                                         :middle (\| \space \|)
+                                         :bottom (\| \_ \|)}
+                                        {:top (\space \_ \space)
+                                         :middle (\| \space \|)
+                                         :bottom (\| \_ \|)}
+                                        {:top (\space \_ \space)
+                                         :middle (\| \space \|)
+                                         :bottom (\| \_ \|)}
+                                        {:top (\space \_ \space)
+                                         :middle (\| \space \|)
+                                         :bottom (\| \_ \|)}
+                                        {:top (\space \_ \space)
+                                         :middle (\| \space \|)
+                                         :bottom (\| \_ \|)}
+                                        {:top (\space \_ \space)
+                                         :middle (\| \space \|)
+                                         :bottom (\| \_ \|)}
+                                        {:top (\space \_ \space)
+                                         :middle (\| \space \|)
+                                         :bottom (\| \_ \|)}
+                                        {:top (\space \_ \space)
+                                         :middle (\| \space \|)
+                                         :bottom (\| \_ \|)}
+                                        {:top (\space \_ \space)
+                                         :middle (\| \space \|)
+                                         :bottom (\| \_ \|)}))
+
+(defonce conformed-zero (first conformed-optical-characters))
 
 (defonce string-zero [" _ "
                       "| |"
@@ -19,3 +45,7 @@
   (testing "transforms an optical character to an account digit"
     (is (= 0
            (oc/optical-character->account-digit conformed-zero)))))
+
+(deftest optical-characters->account-number
+  (is (= '(0 0 0 0 0 0 0 0 0)
+         (oc/optical-characters->account-number conformed-optical-characters))))

@@ -16,3 +16,7 @@
 
 (defn optical-character->account-digit [optical-character]
   (get characters optical-character))
+
+(defn optical-characters->account-number [optical-characters]
+  (s/conform ::spec/account-number
+             (map optical-character->account-digit optical-characters)))

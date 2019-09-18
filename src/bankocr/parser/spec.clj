@@ -1,6 +1,7 @@
 (ns bankocr.parser.spec
   (:require [clojure.spec.alpha :as s]))
 
+(s/def ::account-number (s/and (s/coll-of ::account-digit) #(= 9 (count %))))
 (s/def ::account-digit (s/and number? #(>= % 0) #(<= % 9)))
 
 (s/def ::optical-character-line (s/coll-of char?))

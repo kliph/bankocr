@@ -1,7 +1,8 @@
 (ns bankocr.core-test
   (:require [clojure.test :refer :all]
-            [bankocr.core :refer :all]))
+            [bankocr.core :as ocr]))
 
-(deftest a-test
-  (testing "FIXME, I fail."
-    (is (= 0 1))))
+(deftest parse-document
+  (testing "reads an account number of all zeros"
+    (is (= (ocr/parse-document "./resources/all-zeros.txt")
+           '(0 0 0 0 0 0 0 0 0)))))

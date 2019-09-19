@@ -1,20 +1,17 @@
 (ns bankocr.parser.validations.account-number
   (:require [clojure.spec.alpha :as s]))
 
-(defn calc-single-digit [accumulator digit remaining-digits]
-  (+ accumulator
-     (* digit
-        (inc (count remaining-digits)))))
+(defn account-number->weights [account-number]
+  (map-indexed (fn [idx digit]
+                 (let [weight (- 9 idx)]
+                   (* weight digit)))
+               account-number))
 
 (defn checksum?
   "Predicate checking whether a conformed Account Number has a valid checksum."
   [account-number]
-  (let [computed-sum (loop [acc 0
-                            [digit & remaining-digits] account-number]
-                       (if (empty? remaining-digits)
-                         (calc-single-digit acc digit remaining-digits)
-                         (recur (calc-single-digit acc digit remaining-digits)
-                                remaining-digits)))]
+  (let [weights (account-number->weights account-number)
+        computed-sum (reduce + weights)]
     (zero? (mod computed-sum
                 11))))
 

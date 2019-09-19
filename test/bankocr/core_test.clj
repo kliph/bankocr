@@ -45,7 +45,7 @@
            '(0 0 0 0 0 0 0 5 1))))
   (testing "parses use case 3-2"
     (is (= (first (ocr/parse-document "./resources/use-case-3-2.txt"))
-           '(4 9 0 6 7 7 1 \?)))))
+           '(4 9 0 0 6 7 7 1 \?)))))
 
 (deftest write-documents
   (testing "takes a list of files and writes one file each in the appropriate format"))

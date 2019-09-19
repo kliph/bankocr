@@ -14,6 +14,17 @@
     [:digit 5]
     [:digit 1]))
 
+(def invalid-conformed-account-number
+  '([:digit 6]
+    [:digit 6]
+    [:digit 4]
+    [:digit 3]
+    [:digit 7]
+    [:digit 1]
+    [:digit 4]
+    [:digit 9]
+    [:digit 5]))
+
 (def single-illegible-conformed-account-number
   '([:digit 4]
     [:digit 9]
@@ -41,13 +52,17 @@
     (is (= ""
            (an/conformed-account-number->status
             valid-conformed-account-number))))
-  (testing "returns an ILL when the conformed account number has illegible characters"
+  (testing "returns ILL when the conformed account number has illegible characters"
     (is (= "ILL"
            (an/conformed-account-number->status
             single-illegible-conformed-account-number)))
     (is (= "ILL"
            (an/conformed-account-number->status
-            multiple-illegible-conformed-account-number)))))
+            multiple-illegible-conformed-account-number))))
+  (testing "returns ERR when the the conformed account number is not valid"
+    (is (= "ERR"
+           (an/conformed-account-number->status
+            invalid-conformed-account-number)))))
 
 (deftest contains-illegible?
   (testing "returns false when a conformed account number does not contain an illegible character"

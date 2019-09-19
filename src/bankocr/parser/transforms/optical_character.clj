@@ -59,8 +59,8 @@
                    "|_|"
                    " _|"]) 9})
 
-(defn optical-character->account-digit [optical-character]
-  (get characters optical-character))
+(defn optical-character->account-character [optical-character]
+  (get characters optical-character \?))
 
 (defn optical-characters->account-number
   "Takes a collection of parsed Optical Characters `optical-characters`
@@ -68,5 +68,5 @@
   `:bankocr.parser.spec/account-number`"
   [optical-characters]
   (s/conform ::spec/account-number
-             (map optical-character->account-digit
+             (map optical-character->account-character
                   optical-characters)))

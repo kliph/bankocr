@@ -32,6 +32,10 @@
 
 (def conformed-zero (first conformed-optical-characters))
 
+(def conformed-junk (oc/strings->optical-character [" _ "
+                                                    " _ "
+                                                    " _|"]))
+
 (def string-zero [" _ "
                   "| |"
                   "|_|"])
@@ -51,10 +55,13 @@
     (is (= conformed-zero
            (oc/strings->optical-character string-zero)))))
 
-(deftest optical-character->account-digit
+(deftest optical-character->account-character
   (testing "transforms an optical character to an account digit"
     (is (= 0
-           (oc/optical-character->account-digit conformed-zero)))))
+           (oc/optical-character->account-character conformed-zero))))
+  (testing "transforms an optical character to an illegible account character"
+    (is (= \?
+           (oc/optical-character->account-character conformed-junk)))))
 
 (deftest optical-characters->account-number
   (is (= conformed-account-number

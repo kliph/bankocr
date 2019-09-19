@@ -34,8 +34,8 @@
            (validater/checksum? invalid-account-digits)))))
 
 (deftest validate-account-number
-  (testing "returns a the digits for a validated-account-number"
-    (is (= valid-account-digits
+  (testing "returns a validated, conformed account-number"
+    (is (= valid-conformed-account-number
            (validater/validate-account-number valid-conformed-account-number))))
   (testing "returns invalid for invalid account numbers"
     (is (= :clojure.spec.alpha/invalid

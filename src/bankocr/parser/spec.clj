@@ -1,13 +1,14 @@
 (ns bankocr.parser.spec
   (:require [clojure.spec.alpha :as s]
-            [bankocr.parser.validations.account-number :refer [checksum?]]))
+            [bankocr.parser.validations.account-number :refer [checksum? conformed-checksum?]]))
 
 (s/def ::account-number (s/and
                          (s/coll-of ::account-character)
                          #(= 9 (count %))))
-(s/def ::validated-account-number (s/and (s/coll-of ::account-digit)
-                                         #(= 9 (count %))
-                                         #(checksum? %)))
+(s/def ::validated-conformed-account-number (s/and (s/coll-of ::labeled-account-digit)
+                                                   #(= 9 (count %))
+                                                   #(conformed-checksum? %)))
+(s/def ::labeled-account-digit (s/tuple #{:digit} ::account-digit))
 (s/def ::account-digit (s/and number? #(>= % 0) #(<= % 9)))
 (s/def ::account-character (s/or :digit ::account-digit
                                  :illegible #{\?}))

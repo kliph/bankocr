@@ -15,6 +15,6 @@
   (cond
     (contains-illegible? conformed-account-number) "ILL"
     (s/valid?
-     :bankocr.parser.spec/validated-account-number
-     (an/conformed-account-number->account-digits conformed-account-number)) ""
+     :bankocr.parser.spec/validated-conformed-account-number
+     conformed-account-number) ""
     :else "ERR"))

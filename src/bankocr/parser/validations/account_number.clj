@@ -17,10 +17,16 @@
     (zero? (mod computed-sum
                 11))))
 
+(defn conformed-checksum?
+  [conformed-account-number]
+  (checksum?
+   (account-number/conformed-account-number->account-digits
+    conformed-account-number)))
+
 (defn validate-account-number
   "Takes a conformed Account Number and returns a sequence of digits for
   the Valid Accounted Number conforming to
-  `:bankocr.parser.spec/validated-account-number`"
+  `:bankocr.parser.spec/validated-conformed-account-number`"
   [conformed-account-number]
-  (s/conform :bankocr.parser.spec/validated-account-number
-             (account-number/conformed-account-number->account-digits conformed-account-number)))
+  (s/conform :bankocr.parser.spec/validated-conformed-account-number
+             conformed-account-number))

@@ -15,6 +15,8 @@
   "Parses the files provided as `filenames` and writes an output file in
   `./resources/out/` containing parsed account numbers and metadata
   for each parsed file.  The output filenames will be identical to the
-  input filenames."
-  [filenames]
-  (map write-document! filenames))
+  input filenames.  Please note that the output directory must exist."
+  [& filenames]
+  (doseq [f filenames]
+    (write-document! f)))
+

@@ -43,3 +43,6 @@
   (testing "parses use case 3-1"
     (is (= (first (ocr/parse-document "./resources/use-case-3-1.txt"))
            '(0 0 0 0 0 0 0 5 1)))))
+
+(deftest write-documents
+  (testing "takes a list of files and writes one file each in the appropriate format"))

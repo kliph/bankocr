@@ -33,6 +33,17 @@ A single digit of the account number within the range 0-9.
 
 ## Usage
 
+### Writing documents per User Story 3
+You can run the command by running `lein run -m bankocr.core/write-documents <filenames>` from the command line where `<filenames>` is a list of paths to the input files.
+
+For example:
+
+```sh
+lein run -m bankocr.core/write-documents ./resources/all-zeros.txt ./resources/multiple-entries.txt
+```
+
+Will produce 2 files: `./resources/out/all-zeros.txt` and `./resources/out/multiple-entries.txt`.
+
 ## Running the tests
 
 To run the tests once:

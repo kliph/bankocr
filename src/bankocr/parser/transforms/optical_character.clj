@@ -1,5 +1,6 @@
 (ns bankocr.parser.transforms.optical-character
   (:require [bankocr.parser.spec :as spec]
+            [bankocr.parser.transforms.account-number :as account-number]
             [clojure.spec.alpha :as s]))
 
 (defn strings->optical-character
@@ -63,8 +64,9 @@
 
 (defn optical-characters->account-number
   "Takes a collection of parsed Optical Characters `optical-characters`
-  and returns a collection of account numbers conforming to
-  `::bankocr.parser.spec/account-number`"
+  and returns an account number conforming to
+  `:bankocr.parser.spec/account-number`"
   [optical-characters]
   (s/conform ::spec/account-number
-             (map optical-character->account-digit optical-characters)))
+             (map optical-character->account-digit
+                  optical-characters)))

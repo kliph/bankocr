@@ -16,11 +16,14 @@ A single line of the Document.
 ### Optical Characters
 The scanned digits represented by pipes and underscores as a seven-segment display.
 
-### Account Number
+### Account Digits
 A collection of 9 Account Digits.
 
+### Account Number
+A collection of 9 Account Characters that are either parsed Account Digits or illegible Optical Characters marked with `?`.
+
 ### Validated Account Number
-An account number that has a valid checksum based on the algorithm outlined under User Story 2 [here](http://codingdojo.org/kata/BankOCR/#problem-description).
+An Account Number, containing only Account Digits, that has a valid checksum based on the algorithm outlined under User Story 2 [here](http://codingdojo.org/kata/BankOCR/#problem-description).
 
 ### Account Digit
 A single digit of the account number within the range 0-9.

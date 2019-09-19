@@ -1,7 +1,8 @@
 (ns bankocr.parser.core
   (:require [bankocr.parser.transforms.document :as doc]
             [bankocr.parser.transforms.line :as line]
-            [bankocr.parser.transforms.optical-character :as oc]))
+            [bankocr.parser.transforms.optical-character :as oc]
+            [bankocr.parser.transforms.account-number :as an]))
 
 (defn parse-document
   "Accepts a `filename` such as `./resources/all-zeros.txt` and parses
@@ -12,5 +13,6 @@
     (->> document
          doc/document->lines
          line/lines->optical-characters
-         (map oc/optical-characters->account-number))))
+         (map oc/optical-characters->account-number)
+         (map an/conformed-account-number->account-digits))))
 

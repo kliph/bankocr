@@ -36,6 +36,16 @@
                       "| |"
                       "|_|"])
 
+(defonce conformed-account-number '([:digit 0]
+                                    [:digit 0]
+                                    [:digit 0]
+                                    [:digit 0]
+                                    [:digit 0]
+                                    [:digit 0]
+                                    [:digit 0]
+                                    [:digit 0]
+                                    [:digit 0]))
+
 (deftest strings->optical-character
   (testing "transforms a vector of strings to a conformed optical character"
     (is (= conformed-zero
@@ -47,5 +57,5 @@
            (oc/optical-character->account-digit conformed-zero)))))
 
 (deftest optical-characters->account-number
-  (is (= '(0 0 0 0 0 0 0 0 0)
+  (is (= conformed-account-number
          (oc/optical-characters->account-number conformed-optical-characters))))

@@ -2,6 +2,9 @@
 
 A Clojure library designed to solve the [Bank OCR problem](http://codingdojo.org/kata/BankOCR/#resources).
 
+## Notable dependencies
+- [Leiningen](https://leiningen.org/).  Please install it via the installation instructions [here](https://leiningen.org/#install).
+
 ## Glossary
 
 ### Document

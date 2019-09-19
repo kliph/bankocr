@@ -11,6 +11,10 @@
                conformed-account-number))))
 
 (defn conformed-account-number->status
+  "Takes a conformed Account Number and returns one of three possible statuses:
+  ILL if the Account Number contains illegible Account Characters
+  An empty string if the Account Number is valid
+  ERR otherwise."
   [conformed-account-number]
   (cond
     (contains-illegible? conformed-account-number) "ILL"

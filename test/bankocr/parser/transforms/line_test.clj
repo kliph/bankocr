@@ -2,40 +2,40 @@
   (:require [clojure.test :refer :all]
             [bankocr.parser.transforms.line :as line]))
 
-(defonce conformed-line {:top    " _  _  _  _  _  _  _  _  _ "
-                         :middle "| || || || || || || || || |"
-                         :bottom "|_||_||_||_||_||_||_||_||_|"})
+(def conformed-line {:top    " _  _  _  _  _  _  _  _  _ "
+                     :middle "| || || || || || || || || |"
+                     :bottom "|_||_||_||_||_||_||_||_||_|"})
 
-(defonce lines [conformed-line
-                conformed-line])
+(def lines [conformed-line
+            conformed-line])
 
-(defonce conformed-optical-characters '({:top (\space \_ \space)
-                                         :middle (\| \space \|)
-                                         :bottom (\| \_ \|)}
-                                        {:top (\space \_ \space)
-                                         :middle (\| \space \|)
-                                         :bottom (\| \_ \|)}
-                                        {:top (\space \_ \space)
-                                         :middle (\| \space \|)
-                                         :bottom (\| \_ \|)}
-                                        {:top (\space \_ \space)
-                                         :middle (\| \space \|)
-                                         :bottom (\| \_ \|)}
-                                        {:top (\space \_ \space)
-                                         :middle (\| \space \|)
-                                         :bottom (\| \_ \|)}
-                                        {:top (\space \_ \space)
-                                         :middle (\| \space \|)
-                                         :bottom (\| \_ \|)}
-                                        {:top (\space \_ \space)
-                                         :middle (\| \space \|)
-                                         :bottom (\| \_ \|)}
-                                        {:top (\space \_ \space)
-                                         :middle (\| \space \|)
-                                         :bottom (\| \_ \|)}
-                                        {:top (\space \_ \space)
-                                         :middle (\| \space \|)
-                                         :bottom (\| \_ \|)}))
+(def conformed-optical-characters '({:top (\space \_ \space)
+                                     :middle (\| \space \|)
+                                     :bottom (\| \_ \|)}
+                                    {:top (\space \_ \space)
+                                     :middle (\| \space \|)
+                                     :bottom (\| \_ \|)}
+                                    {:top (\space \_ \space)
+                                     :middle (\| \space \|)
+                                     :bottom (\| \_ \|)}
+                                    {:top (\space \_ \space)
+                                     :middle (\| \space \|)
+                                     :bottom (\| \_ \|)}
+                                    {:top (\space \_ \space)
+                                     :middle (\| \space \|)
+                                     :bottom (\| \_ \|)}
+                                    {:top (\space \_ \space)
+                                     :middle (\| \space \|)
+                                     :bottom (\| \_ \|)}
+                                    {:top (\space \_ \space)
+                                     :middle (\| \space \|)
+                                     :bottom (\| \_ \|)}
+                                    {:top (\space \_ \space)
+                                     :middle (\| \space \|)
+                                     :bottom (\| \_ \|)}
+                                    {:top (\space \_ \space)
+                                     :middle (\| \space \|)
+                                     :bottom (\| \_ \|)}))
 
 (deftest line->optical-characters
   (testing "transforms a line to conformed optical characters"

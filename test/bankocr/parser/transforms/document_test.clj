@@ -2,7 +2,7 @@
   (:require [clojure.test :refer :all]
             [bankocr.parser.transforms.document :as doc]))
 
-(defonce document (slurp "./resources/all-zeros.txt"))
+(def document (slurp "./resources/all-zeros.txt"))
 
 (deftest document->lines
   (testing "transforms a document to conformed lines"

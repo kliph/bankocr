@@ -2,49 +2,49 @@
   (:require [clojure.test :refer :all]
             [bankocr.parser.transforms.optical-character :as oc]))
 
-(defonce conformed-optical-characters '({:top (\space \_ \space)
-                                         :middle (\| \space \|)
-                                         :bottom (\| \_ \|)}
-                                        {:top (\space \_ \space)
-                                         :middle (\| \space \|)
-                                         :bottom (\| \_ \|)}
-                                        {:top (\space \_ \space)
-                                         :middle (\| \space \|)
-                                         :bottom (\| \_ \|)}
-                                        {:top (\space \_ \space)
-                                         :middle (\| \space \|)
-                                         :bottom (\| \_ \|)}
-                                        {:top (\space \_ \space)
-                                         :middle (\| \space \|)
-                                         :bottom (\| \_ \|)}
-                                        {:top (\space \_ \space)
-                                         :middle (\| \space \|)
-                                         :bottom (\| \_ \|)}
-                                        {:top (\space \_ \space)
-                                         :middle (\| \space \|)
-                                         :bottom (\| \_ \|)}
-                                        {:top (\space \_ \space)
-                                         :middle (\| \space \|)
-                                         :bottom (\| \_ \|)}
-                                        {:top (\space \_ \space)
-                                         :middle (\| \space \|)
-                                         :bottom (\| \_ \|)}))
+(def conformed-optical-characters '({:top (\space \_ \space)
+                                     :middle (\| \space \|)
+                                     :bottom (\| \_ \|)}
+                                    {:top (\space \_ \space)
+                                     :middle (\| \space \|)
+                                     :bottom (\| \_ \|)}
+                                    {:top (\space \_ \space)
+                                     :middle (\| \space \|)
+                                     :bottom (\| \_ \|)}
+                                    {:top (\space \_ \space)
+                                     :middle (\| \space \|)
+                                     :bottom (\| \_ \|)}
+                                    {:top (\space \_ \space)
+                                     :middle (\| \space \|)
+                                     :bottom (\| \_ \|)}
+                                    {:top (\space \_ \space)
+                                     :middle (\| \space \|)
+                                     :bottom (\| \_ \|)}
+                                    {:top (\space \_ \space)
+                                     :middle (\| \space \|)
+                                     :bottom (\| \_ \|)}
+                                    {:top (\space \_ \space)
+                                     :middle (\| \space \|)
+                                     :bottom (\| \_ \|)}
+                                    {:top (\space \_ \space)
+                                     :middle (\| \space \|)
+                                     :bottom (\| \_ \|)}))
 
-(defonce conformed-zero (first conformed-optical-characters))
+(def conformed-zero (first conformed-optical-characters))
 
-(defonce string-zero [" _ "
-                      "| |"
-                      "|_|"])
+(def string-zero [" _ "
+                  "| |"
+                  "|_|"])
 
-(defonce conformed-account-number '([:digit 0]
-                                    [:digit 0]
-                                    [:digit 0]
-                                    [:digit 0]
-                                    [:digit 0]
-                                    [:digit 0]
-                                    [:digit 0]
-                                    [:digit 0]
-                                    [:digit 0]))
+(def conformed-account-number '([:digit 0]
+                                [:digit 0]
+                                [:digit 0]
+                                [:digit 0]
+                                [:digit 0]
+                                [:digit 0]
+                                [:digit 0]
+                                [:digit 0]
+                                [:digit 0]))
 
 (deftest strings->optical-character
   (testing "transforms a vector of strings to a conformed optical character"

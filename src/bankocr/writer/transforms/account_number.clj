@@ -1,4 +1,6 @@
-(ns bankocr.writer.transforms.account-number)
+(ns bankocr.writer.transforms.account-number
+  (:require [bankocr.parser.transforms.account-number :as an]
+            [clojure.spec.alpha :as s]))
 
 (defn contains-illegible?
   [conformed-account-number]
@@ -10,6 +12,9 @@
 
 (defn conformed-account-number->status
   [conformed-account-number]
-  (if (contains-illegible? conformed-account-number)
-    "ILL"
-    ""))
+  (cond
+    (contains-illegible? conformed-account-number) "ILL"
+    (s/valid?
+     :bankocr.parser.spec/validated-account-number
+     (an/conformed-account-number->account-digits conformed-account-number)) ""
+    :else "ERR"))

@@ -62,7 +62,7 @@
 (defn optical-character->account-character [optical-character]
   (get characters optical-character \?))
 
-(defn optical-characters->account-number
+(defn optical-characters->conformed-account-number
   "Takes a collection of parsed Optical Characters `optical-characters`
   and returns an account number conforming to
   `:bankocr.parser.spec/account-number`"

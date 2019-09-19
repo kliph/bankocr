@@ -13,7 +13,6 @@
 (s/def ::account-character (s/or :digit ::account-digit
                                  :illegible #{\?}))
 
-
 (s/def ::optical-character-line (s/coll-of char?))
 (s/def ::parsed-optical-character-triple (s/cat :top ::optical-character-line
                                                 :middle ::optical-character-line

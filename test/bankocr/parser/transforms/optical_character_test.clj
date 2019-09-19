@@ -63,6 +63,6 @@
     (is (= \?
            (oc/optical-character->account-character conformed-junk)))))
 
-(deftest optical-characters->account-number
+(deftest optical-characters->conformed-account-number
   (is (= conformed-account-number
-         (oc/optical-characters->account-number conformed-optical-characters))))
+         (oc/optical-characters->conformed-account-number conformed-optical-characters))))

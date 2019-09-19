@@ -39,4 +39,7 @@
              (0 0 0 0 0 0 0 0 0)))))
   (testing "parses all valid non-zero digits"
     (is (= (first (ocr/parse-document "./resources/all-non-zero-digits.txt"))
-           '(1 2 3 4 5 6 7 8 9)))))
+           '(1 2 3 4 5 6 7 8 9))))
+  (testing "parses use case 3-1"
+    (is (= (first (ocr/parse-document "./resources/use-case-3-1.txt"))
+           '(0 0 0 0 0 0 0 5 1)))))

@@ -73,3 +73,12 @@
            (an/contains-illegible? single-illegible-conformed-account-number)))
     (is (= true
            (an/contains-illegible? multiple-illegible-conformed-account-number)))))
+
+(deftest conformed-account-number->writer-line
+  (testing "returns the correct string for a valid conformed account number"
+    (is (= "000000051 "
+           (an/conformed-account-number->writer-line valid-conformed-account-number)))
+    (is (= "49006771? ILL"
+           (an/conformed-account-number->writer-line single-illegible-conformed-account-number)))
+    (is (= "1234?678? ILL"
+           (an/conformed-account-number->writer-line multiple-illegible-conformed-account-number)))))

@@ -22,3 +22,14 @@
      :bankocr.parser.spec/validated-conformed-account-number
      conformed-account-number) ""
     :else "ERR"))
+
+(defn conformed-account-number->writer-line
+  "Takes a conformed account number and returns a string containing the
+  formatted account number and status.  These tuples constitute a
+  single line of the writer's output files"
+  [conformed-account-number]
+  (str
+   (str (apply str
+               (an/conformed-account-number->account-digits conformed-account-number)))
+   " "
+   (conformed-account-number->status conformed-account-number)))

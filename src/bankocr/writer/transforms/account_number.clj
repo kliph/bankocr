@@ -29,7 +29,7 @@
   single line of the writer's output files"
   [conformed-account-number]
   (str
-   (str (apply str
-               (an/conformed-account-number->account-digits conformed-account-number)))
+   (apply str
+          (an/conformed-account-number->account-digits conformed-account-number))
    " "
    (conformed-account-number->status conformed-account-number)))

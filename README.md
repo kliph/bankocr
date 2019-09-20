@@ -42,7 +42,7 @@ For example:
 lein run -m bankocr.core/write-documents ./resources/all-zeros.txt ./resources/multiple-entries.txt
 ```
 
-Will produce 2 files: `./resources/out/all-zeros.txt` and `./resources/out/multiple-entries.txt`.
+will produce 2 files: `./resources/out/all-zeros.txt` and `./resources/out/multiple-entries.txt`.
 
 ## Running the tests
 

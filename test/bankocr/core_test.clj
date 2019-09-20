@@ -51,4 +51,11 @@
            '(1 2 3 4 \? 6 7 8 \?)))))
 
 (deftest write-documents
-  (testing "takes a list of files and writes one file each in the appropriate format"))
+  (let [calls (atom [])]
+    (with-redefs [spit (fn [path body] (swap! calls conj [path body]))]
+      (ocr/write-documents "./resources/multiple-entries.txt" "./resources/use-case-3-3.txt" "./resources/all-sevens.txt")
+      (testing "takes a list of files and writes one file each in the appropriate format"
+        (is (= [["./resources/out/multiple-entries.txt" "000000000 \n000000000 "]
+                ["./resources/out/use-case-3-3.txt" "1234?678? ILL"]
+                ["./resources/out/all-sevens.txt" "777777777 ERR"]]
+               @calls))))))
